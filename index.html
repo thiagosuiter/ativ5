@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Cálculo e Classificação do IMC</title>
+</head>
+<body>
+    <script>
+        let nome = prompt("Digite o seu nome:");
+
+        if (!nome || nome.trim() === "") {
+            alert("Nome inválido! Recarregue a página e tente novamente.");
+        } else {
+            let alturaCm = prompt("Digite sua altura em centímetros (ex: 170):");
+            let altura = parseFloat(alturaCm);
+
+            if (isNaN(altura) || altura <= 0) {
+                alert("Altura inválida! Recarregue a página e tente novamente.");
+            } else {
+                let pesoKg = prompt("Digite seu peso em quilos (ex: 70):");
+                let peso = parseFloat(pesoKg);
+
+                if (isNaN(peso) || peso <= 0) {
+                    alert("Peso inválido! Recarregue a página e tente novamente.");
+                } else {
+                    let alturaMetros = altura / 100;
+                    let imc = peso / (alturaMetros ** 2);
+                    let classificacao = "";
+
+                    if (imc < 16) {
+                        classificacao = "Baixo peso muito grave";
+                    } else if (imc >= 16 && imc <= 16.99) {
+                        classificacao = "Baixo peso grave";
+                    } else if (imc >= 17 && imc <= 18.49) {
+                        classificacao = "Baixo peso";
+                    } else if (imc >= 18.5 && imc <= 24.99) {
+                        classificacao = "Peso normal";
+                    } else if (imc >= 25 && imc <= 29.99) {
+                        classificacao = "Sobrepeso";
+                    } else if (imc >= 30 && imc <= 34.99) {
+                        classificacao = "Obesidade grau I";
+                    } else if (imc >= 35 && imc <= 39.99) {
+                        classificacao = "Obesidade grau II";
+                    } else if (imc >= 40) {
+                        classificacao = "Obesidade grau III";
+                    }
+
+                    alert(nome + " possui índice de massa corporal igual a " + imc.toFixed(2) + ", sendo classificado como:\n" + classificacao + ".");
+                }
+            }
+        }
+    </script>
+</body>
+</html>
